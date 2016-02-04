@@ -4,12 +4,40 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
 
+    def getVersionCode = {
+        try {
+            def stdout = new ByteArrayOutputStream()
+            exec {
+                commandLine 'git', 'rev-list', '--first-parent', '--count', 'origin/master'
+                standardOutput = stdout
+            }
+            return Integer.parseInt(stdout.toString().trim())
+        }
+        catch (ignored) {
+            return 10;
+        }
+    }
+
+    def getVersionName = {
+        try {
+            def stdout = new ByteArrayOutputStream()
+            exec {
+                commandLine 'git', 'describe', '--tags'
+                standardOutput = stdout
+            }
+            return stdout.toString().trim()
+        }
+        catch (ignored) {
+            return '0.0.1';
+        }
+    }
+
     defaultConfig {
         applicationId "cs.nizam.funeralrites"
         minSdkVersion 12
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode getVersionCode()
+        versionName getVersionName()
     }
     buildTypes {
         release {
@@ -26,5 +54,4 @@ dependencies {
     compile 'com.android.support:support-v4:23.1.1'
     compile 'com.android.support:recyclerview-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
-    compile 'com.google.android.gms:play-services-ads:8.4.0'
 }
