@@ -5,11 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cs.nizam.funeralrites.R;
+
 /**
  * Helper class for providing sample content for user interfaces created by
  * Android template wizards.
  * <p/>
- * TODO: Replace all uses of this class before publishing your app.
  */
 public class Content {
 
@@ -38,42 +39,43 @@ public class Content {
     }
 
     private static Item createItem(int position) {
-        String title, detail;
+        int title;
+        String detail;
         switch (position) {
             case 1:
-                title = "Marana vivaram kettal";
+                title = R.string.marana_vivaram_kettal;
                 detail = "file:///android_asset/dua_while_listen_about.html";
                 break;
             case 2:
-                title = "Maricha udane";
+                title = R.string.maricha_udane;
                 detail = "file:///android_asset/right_after_death.html";
                 break;
             case 3:
-                title = "Mayyith kulippikkal";
+                title = R.string.mayyith_kulippikkal;
                 detail = "file:///android_asset/bath.html";
                 break;
             case 4:
-                title = "Kafan cheyyal";
+                title = R.string.kafan_cheyyal;
                 detail = "file:///android_asset/clothing.html";
                 break;
             case 5:
-                title = "Mayyith niskaaram";
+                title = R.string.niskaaram;
                 detail = "file:///android_asset/namaz.html";
                 break;
             case 6:
-                title = "Kabaradakkam";
+                title = R.string.kabaradakkam;
                 detail = "file:///android_asset/burrial.html";
                 break;
             case 7:
-                title = "Kabaradakkumbol";
+                title = R.string.kabaradakkumbol;
                 detail = "file:///android_asset/while_burry.html";
                 break;
             case 8:
-                title = "Kabar ziyaarath";
+                title = R.string.ziyarath;
                 detail = "file:///android_asset/visiting.html";
                 break;
             default:
-                title = "Test";
+                title = R.string.app_name;
                 detail = "test";
         }
         return new Item(String.valueOf(position), title, detail);
@@ -90,18 +92,14 @@ public class Content {
      */
     public static class Item {
         public final String id;
-        public final String content;
+        public final int content;
         public final String details;
 
-        public Item(String id, String content, String details) {
+        public Item(String id, int content, String details) {
             this.id = id;
             this.content = content;
             this.details = details;
         }
 
-        @Override
-        public String toString() {
-            return content;
-        }
     }
 }

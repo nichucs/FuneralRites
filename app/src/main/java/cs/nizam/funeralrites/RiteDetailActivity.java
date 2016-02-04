@@ -1,6 +1,8 @@
 package cs.nizam.funeralrites;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 /**
  * An activity representing a single Rite detail screen. This
@@ -30,8 +33,7 @@ public class RiteDetailActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                btnRateAppOnClick(view);
             }
         });
 
@@ -80,4 +82,33 @@ public class RiteDetailActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private boolean MyStartActivity(Intent aIntent) {
+        try
+        {
+            startActivity(aIntent);
+            return true;
+            }
+        catch (ActivityNotFoundException e)
+        {
+            return false;
+            }
+    }
+
+    //On click event for rate this app button
+    public void btnRateAppOnClick(View v) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        //Try Google play
+        intent.setData(Uri.parse("market://details?id=cs.nizam.funeralrites"));
+        if (!MyStartActivity(intent)) {
+            //Market (Google play) app seems not installed, let's try to open a webbrowser
+            intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=cs.nizam.funeralrites"));
+            if (!MyStartActivity(intent)) {
+                //Well if this also fails, we have run out of options, inform the user.
+                Snackbar.make(v, "Could not open Android market, please install the market app.", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                }
+            }
+    }
+
 }

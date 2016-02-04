@@ -1,6 +1,7 @@
 package cs.nizam.funeralrites;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -50,7 +51,9 @@ public class RiteDetailFragment extends Fragment {
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setTitle(mItem.content);
+                appBarLayout.setTitle(getResources().getString(mItem.content));
+//                appBarLayout.setExpandedTitleTypeface(Typeface.createFromAsset(activity.getAssets(), "karthika.ttf"));
+//                appBarLayout.setCollapsedTitleTypeface(Typeface.createFromAsset(activity.getAssets(), "karthika.ttf"));
             }
         }
     }

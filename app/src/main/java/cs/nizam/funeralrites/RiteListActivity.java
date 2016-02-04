@@ -1,5 +1,6 @@
 package cs.nizam.funeralrites;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,8 +49,7 @@ public class RiteListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                shareThisApp(view);
             }
         });
 
@@ -90,7 +90,7 @@ public class RiteListActivity extends AppCompatActivity {
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = mValues.get(position);
             holder.mIdView.setText(mValues.get(position).id);
-            holder.mContentView.setText(mValues.get(position).content);
+            holder.mContentView.setText(getResources().getString(mValues.get(position).content));
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -136,6 +136,18 @@ public class RiteListActivity extends AppCompatActivity {
             public String toString() {
                 return super.toString() + " '" + mContentView.getText() + "'";
             }
+        }
+    }
+    public void shareThisApp(View view) {
+        String shareString = getString(R.string.app_name) + "\n\n" + "A Malayalam App for quick reference about Mayyith Niskaram and related rituals" + "\n\n" + "https://play.google.com/store/apps/details?id=cs.nizam.funeralrites"  + "\n";
+        Intent intent = new Intent("android.intent.action.SEND");
+        intent.setType("text/plain");
+        intent.putExtra("android.intent.extra.TEXT", shareString);
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Snackbar.make(view, "Failed to share from this device.", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
         }
     }
 }
