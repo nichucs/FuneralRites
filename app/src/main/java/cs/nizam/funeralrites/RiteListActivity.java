@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import com.google.android.gms.analytics.HitBuilders;
+
 import cs.nizam.funeralrites.content.Content;
 
 import java.util.List;
@@ -35,11 +37,17 @@ public class RiteListActivity extends AppCompatActivity {
      * device.
      */
     private boolean mTwoPane;
+    AnalyticsTrackers mTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rite_list);
+        mTracker = AnalyticsTrackers.getInstance();
+        mTracker.get(AnalyticsTrackers.Target.APP).send(new HitBuilders.EventBuilder()
+                .setCategory("Track")
+                .setAction("App_open")
+                .build());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
