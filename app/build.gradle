@@ -2,6 +2,12 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
+        mayyith {
+            keyAlias 'mayyith'
+            keyPassword 'nichu5463'
+            storeFile file('/home/nizamcs/Signs/mayyith.jks')
+            storePassword 'nichu5463'
+        }
     }
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
@@ -42,6 +48,8 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.mayyith
+            proguardFile '/media/nizamcs/Nzm/Projects/FuneralRites/app/proguard-rules.pro'
         }
     }
 }
