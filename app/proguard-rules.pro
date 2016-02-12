@@ -73,3 +73,7 @@
  -keep class android.support.design.** { *; }
  -keep interface android.support.design.** { *; }
  -keep public class android.support.design.R$* { *; }
+
+ #Fabric
+ -keep class com.crashlytics.** { *; }
+ -dontwarn com.crashlytics.**
