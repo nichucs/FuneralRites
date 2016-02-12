@@ -6,7 +6,7 @@ import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by nizamcs on 5/2/16.
- * Initalize global objects here
+ * Initialize global objects here
  */
 public class FuneralApplication extends Application {
 
