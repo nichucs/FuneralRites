@@ -24,7 +24,7 @@ public class Content {
      */
     public static final Map<String, Item> ITEM_MAP = new HashMap<String, Item>();
 
-    private static final int COUNT = 9;
+    private static final int COUNT = 11;
 
     static {
         // Add some sample items.
@@ -47,34 +47,42 @@ public class Content {
                 detail = "file:///android_asset/intro.html";
                 break;
             case 2:
+                title = R.string.manarasmarana;
+                detail = "file:///android_asset/be_ready.html";
+                break;
+            case 3:
                 title = R.string.marana_vivaram_kettal;
                 detail = "file:///android_asset/dua_while_listen_about.html";
                 break;
-            case 3:
+            case 4:
                 title = R.string.maricha_udane;
                 detail = "file:///android_asset/right_after_death.html";
                 break;
-            case 4:
+            case 5:
                 title = R.string.mayyith_kulippikkal;
                 detail = "file:///android_asset/bath.html";
                 break;
-            case 5:
+            case 6:
                 title = R.string.kafan_cheyyal;
                 detail = "file:///android_asset/clothing.html";
                 break;
-            case 6:
+            case 7:
                 title = R.string.niskaaram;
                 detail = "file:///android_asset/namaz.html";
                 break;
-            case 7:
+            case 8:
+                title = R.string.janaza;
+                detail = "file:///android_asset/janaza.html";
+                break;
+            case 9:
                 title = R.string.kabaradakkam;
                 detail = "file:///android_asset/burrial.html";
                 break;
-            case 8:
+            case 10:
                 title = R.string.kabaradakkumbol;
                 detail = "file:///android_asset/while_burry.html";
                 break;
-            case 9:
+            case 11:
                 title = R.string.ziyarath;
                 detail = "file:///android_asset/visiting.html";
                 break;
