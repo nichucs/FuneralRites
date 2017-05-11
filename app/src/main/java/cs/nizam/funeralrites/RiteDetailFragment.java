@@ -8,7 +8,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.CookieSyncManager;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import cs.nizam.funeralrites.content.Content;
@@ -25,11 +29,13 @@ public class RiteDetailFragment extends Fragment {
      * represents.
      */
     public static final String ARG_ITEM_ID = "item_id";
+    private static final String ENCODING_AUTO_DETECTED = "auto-detector";
 
     /**
      * The dummy content this fragment is presenting.
      */
     private Content.Item mItem;
+    private WebView mWebView;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -41,6 +47,7 @@ public class RiteDetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        CookieSyncManager.createInstance(getContext());
 
         if (getArguments().containsKey(ARG_ITEM_ID)) {
             // Load the dummy content specified by the fragment
@@ -62,12 +69,38 @@ public class RiteDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.rite_detail, container, false);
-
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((WebView) rootView.findViewById(R.id.rite_detail)).loadUrl(mItem.details);
+            mWebView = (WebView) rootView.findViewById(R.id.rite_detail);
+            mWebView.setWebChromeClient(new WebChromeClient());
+            /*final WebSettings s = mWebView.getSettings();
+            s.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+            s.setUseWideViewPort(true);
+            s.setSavePassword(false);
+            s.setSaveFormData(false);
+            s.setBlockNetworkLoads(true);
+            s.setDefaultTextEncodingName(ENCODING_AUTO_DETECTED);
+            s.setJavaScriptEnabled(false);*/
+            mWebView.loadUrl(mItem.details);
         }
 
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        CookieSyncManager.getInstance().startSync();
+    }
+
+    public void onStop() {
+        super.onStop();
+        CookieSyncManager.getInstance().stopSync();
+        this.mWebView.stopLoading();
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+        this.mWebView.destroy();
     }
 }

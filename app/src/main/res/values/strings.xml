@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">Mayyith Paripalanam</string>
     <string name="title_rite_detail">Rite Detail</string>
-    <string name="marana_vivaram_kettal">മരണ വിവരം കേട്ടാൽ</string>
-    <string name="maricha_udane">മരിച്ച ഉടനെ</string>
+    <string name="aamugham">രോഗം</string>
+    <string name="manarasmarana">മരണ സ്മരണ</string>
+    <string name="marana_vivaram_kettal">മരണം ആസന്നമായാൽ</string>
+    <string name="maricha_udane">ദുഃഖപ്രകടനം (ഇദ്ദ)</string>
     <string name="mayyith_kulippikkal">മയ്യിത്ത് കുളിപ്പിക്കൽ</string>
     <string name="kafan_cheyyal">കഫൻ ചെയ്യൽ</string>
     <string name="niskaaram">മയ്യിത്ത് നിസ്കാരം</string>
-    <string name="kabaradakkam">കബറടക്കം</string>
-    <string name="kabaradakkumbol">കബറടക്കുമ്പോൾ</string>
-    <string name="ziyarath">കബർ സിയാറത്ത്</string>
+    <string name="janaza">ജനാസ കൊണ്ടുപോകുമ്പോൾ</string>
+    <string name="kabaradakkam">ഖബറടക്കം</string>
+    <string name="ziyarath">ഖബർ സന്ദർശനം</string>
+    <string name="kabaradakkumbol">അനന്തരം</string>
 </resources>
