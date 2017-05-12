@@ -24,7 +24,7 @@ public class Content {
      */
     public static final Map<String, Item> ITEM_MAP = new HashMap<String, Item>();
 
-    private static final int COUNT = 11;
+    private static final int COUNT = 12;
 
     static {
         // Add some sample items.
@@ -85,6 +85,10 @@ public class Content {
             case 11:
                 title = R.string.ziyarath;
                 detail = "file:///android_asset/visiting.html";
+                break;
+            case 12:
+                title = R.string.anantharam;
+                detail = "file:///android_asset/after_all.html";
                 break;
             default:
                 title = R.string.app_name;
